@@ -8,6 +8,7 @@ const Settings = () => {
 
   const { dispatch } = useContext(AuthContext);
 
+  //* Eliminacion del LocalStorage
   const logoutAction = () => {
     dispatch({
       type: types.logout,

@@ -7,11 +7,11 @@ import Settings from '../pages/Settings';
 import PrivateRoutes from './PrivateRoutes';
 import PublicRoutes from './PublicRoutes';
 
-//Router con rutas privadas y publicas
+//Router con rutas protegidas
 
 const AppRouter = () => {
   return (
-    <>
+    <div className='page'>
       <Router>
         <Routes>
           <Route path='/login' element={<PublicRoutes />}>
@@ -26,7 +26,7 @@ const AppRouter = () => {
         </Routes>
         <Navbar />
       </Router>
-    </>
+    </div>
   );
 };
 

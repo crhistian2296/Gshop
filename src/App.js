@@ -5,7 +5,7 @@ import AppRouter from './router/AppRouter';
 
 function App() {
   const init = () => JSON.parse(localStorage.getItem('users')) || [];
-
+  //*Formato del estado
   // const initialValue = {
   //   name: 'frontend',
   //   password: 'gshop',

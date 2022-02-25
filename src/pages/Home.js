@@ -18,7 +18,7 @@ const Home = () => {
   return (
     <div className='page d-flex justify-content-center align-items-center'>
       <h1 className='btn btn-primary' onClick={handleClick}>
-        Arbir puerta
+        Abrir puerta
       </h1>
     </div>
   );
