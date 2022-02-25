@@ -1,3 +1,5 @@
+import { faGear, faHouse, faUser } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 
@@ -6,16 +8,16 @@ const Navbar = () => {
     <nav className='navbar navbar-expand-sm navbar-dark bg-dark'>
       <div className='container-fluid'>
         <Link className='navbar-brand' to='/'>
-          Gshop
+          Home <FontAwesomeIcon icon={faHouse} />
         </Link>
 
         <div className='navbar-collapse justify-content-sm-between '>
           <div className='navbar-nav'>
             <NavLink className='nav-item nav-link' to='/profile'>
-              Perfil
+              Perfil <FontAwesomeIcon icon={faUser} />
             </NavLink>
             <NavLink className='nav-item nav-link' to='/settings'>
-              Ajustes
+              Ajustes <FontAwesomeIcon icon={faGear} />
             </NavLink>
           </div>
           <div className='navbar-nav'>

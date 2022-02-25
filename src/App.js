@@ -8,8 +8,6 @@ function App() {
     logged: true,
   };
 
-  // loginRequest();
-  // headerRequest();
   // const [state, dispatch] = useReducer(authReducer, {}, initialValue);
 
   return (
