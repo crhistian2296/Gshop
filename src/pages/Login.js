@@ -17,7 +17,7 @@ const Login = () => {
   const { user, password } = formValues;
 
   //* Anexar a LocalStorage
-  const { state, dispatch } = useContext(AuthContext);
+  const { dispatch } = useContext(AuthContext);
 
   const loginAction = (user, password) => {
     dispatch({ type: types.login, payload: { user, password } });
