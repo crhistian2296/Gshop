@@ -3,10 +3,6 @@ import { useState } from 'react';
 const useForm = (initialState = {}) => {
   const [formValues, setFormValues] = useState(initialState);
 
-  const reset = () => {
-    setFormValues(initialState);
-  };
-
   const handleInputChange = ({ target }) => {
     setFormValues(() => ({
       ...formValues,
@@ -14,12 +10,7 @@ const useForm = (initialState = {}) => {
     }));
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(formValues);
-  };
-
-  return { formValues, handleInputChange, reset, handleSubmit };
+  return { formValues, handleInputChange };
 };
 
 export default useForm;

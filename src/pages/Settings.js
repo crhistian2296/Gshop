@@ -1,16 +1,27 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../auth/AuthContext';
+import { types } from '../types/types';
 
 const Settings = () => {
   const navigate = useNavigate();
 
-  const redirect = () => {
+  const { dispatch } = useContext(AuthContext);
+
+  const logoutAction = () => {
+    dispatch({
+      type: types.logout,
+    });
+  };
+
+  const handleClick = () => {
+    logoutAction();
     navigate('/login');
   };
 
   return (
     <div className='page d-flex justify-content-center align-items-center'>
-      <h1 className='btn btn-primary' onClick={() => redirect()}>
+      <h1 className='btn btn-primary' onClick={() => handleClick()}>
         Cerrar sesión
       </h1>
     </div>

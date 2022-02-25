@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../auth/AuthContext';
 import useForm from '../hooks/useForm';
 import { loginRequest } from '../services/axios';
+import { types } from '../types/types';
 
 const Login = () => {
   const navigate = useNavigate();
 
-  // Custom hook para manejo de formularios
+  //* Custom hook para manejo de formularios
   const { formValues, handleInputChange } = useForm({
     user: '',
     password: '',
@@ -14,7 +16,14 @@ const Login = () => {
 
   const { user, password } = formValues;
 
-  // Envio de los datos de acceso
+  //* Anexar a LocalStorage
+  const { state, dispatch } = useContext(AuthContext);
+
+  const loginAction = (user, password) => {
+    dispatch({ type: types.login, payload: { user, password } });
+  };
+
+  //* Envio de los datos de acceso
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -22,7 +31,11 @@ const Login = () => {
       const res = await loginRequest(formValues);
 
       // console.log(res);
-      res === 'OK' ? navigate('/') : console.warn('Access denied');
+      // res === 'OK' ? navigate('/') : console.warn('Access denied');
+      if (res !== 'OK') return console.warn('Acces denied');
+
+      loginAction(user, password);
+      return navigate('/');
     } catch (error) {
       console.log(error);
     }
@@ -41,8 +54,8 @@ const Login = () => {
             name='user'
             value={user}
             className='form-control'
-            // id='user'
-            // aria-describedby='emailHelp'
+            id='user'
+            aria-describedby='emailHelp'
           />
         </div>
         <div className='mb-3'>
@@ -55,7 +68,7 @@ const Login = () => {
             name='password'
             value={password}
             className='form-control'
-            // id='password'
+            id='password'
           />
         </div>
         <div className='mb-3 form-check'>
